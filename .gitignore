@@ -4,7 +4,7 @@
 /app/vendor/
 
 # Template ignore
-/public/template/
+# /public/template/
 
 # Admincp Plugins
 
