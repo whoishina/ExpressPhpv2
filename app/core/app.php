@@ -112,28 +112,7 @@ function index() {
     
         if( app::$path === '/' )
         {
-            
-            include TEMPLATE_PATH . 'index.php';
-
-            if( method_exists( 'main', 'index') )
-                main::index()
-            ;else
-                echo 'You must create a class "main" and a function named "index" in "index.php"';
-        }else{
-            
-            preg_match_all( '/([\w]+)(\/?)/', app::$path , $matchs ) ;
-
-            $__params = $matchs[1];
-
-            include TEMPLATE_PATH . $__params[0]. '.php';
-
-            if( isset($__params[1]) &&    method_exists( $__params[0] , $__params[1] ) )
-            {
-                $__params[0]::$__params[1]();
-            }else{
-                // $__params[0]::__construct();
-            }
-
+            require __DIR__ . "/errors/autoload.php";
         }
 
 
