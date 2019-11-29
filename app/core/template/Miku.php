@@ -1,5 +1,4 @@
 <?php
-
 class Miku {
 
     public $template_subdir  = '';
@@ -15,6 +14,12 @@ class Miku {
     public $content = '';
 
     public $viewData ;
+
+    public $variebles ;
+
+    public function __construct() {
+        $GLOBALS['Miku'] = [];
+    }
 
     public function views() {
         $this->template_subdir = $this->views;
@@ -34,6 +39,10 @@ class Miku {
 
     public function addVars(){
         // $this->viewData
+    }
+
+    public function let( $varName , $varData  ) {
+        $GLOBALS['Miku'][$varName] = $varData;
     }
 
     
@@ -56,6 +65,7 @@ class Miku {
                         if( is_array($theData) ){
                             foreach( $theData as $subData1 => $theData1 ){
                                 $this->content = str_replace( '{{'.$viewDataItem.'.'.  $subData.'.'.$subData1.'}}', $theData1 , $this->content );
+
                             }
                         }else 
                         $this->content = str_replace( '{{'. $viewDataItem .'.'.$subData.'}}' , $theData , $this->content );
@@ -63,6 +73,20 @@ class Miku {
                 }else 
                 $this->content = str_replace( '{{'. $viewDataItem .'}}' , $thisItem , $this->content );
             }
+            
+            /**
+             * Get Count of variebles in template file
+             */
+            preg_match_all('/\{\{\$(.+?)\}\}/', $this->content, $this->variebles);
+
+            /**
+             * Replace Variebles 
+             */
+            foreach( ($this->variebles[1]) as $thisVars => $val ){
+                $this->content = preg_replace('/\{\{\$'. $val. '\}\}/', $GLOBALS['Miku'][$val] , $this->content);
+                
+            }
+                
     }
 
     public function jsonCalll ($var)

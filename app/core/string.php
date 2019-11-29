@@ -1,15 +1,30 @@
 <?php
 return new class {
-    public $content = '';
+    public $content = '';   
+    public $var ;
+
 
     public function get() {
         return $this->content;
     }
 
-    public function view() {
-        return $this->content;
+    public function exec() {
     }
 
+    public function view() {
+        echo  $this->content;
+    }
+
+    public function fetch () {
+        $this->view();
+    }
+
+    public function let( $var ){
+        global $var ;
+        $this->var = $var ;
+        $this->put($var);
+        return $this;
+    }
 
     public function put($ctn){
         $this->content = $ctn ;

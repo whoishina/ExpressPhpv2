@@ -19,7 +19,6 @@ function vendor( $plugin ){
   else
     die("File not found!! {$dir}");
 }
-
 function plugindir( $plugin ) : String
 {
   return __APPDIR.'/app/modules/'.$plugin ;
@@ -56,4 +55,3 @@ function app_core( $name ){
   $file = __APPDIR.'/app/core/'.$name .".php";
   include $file ;
 }
-?>

@@ -43,9 +43,5 @@ Define('TEMPLATE_URI','//'.DOMAIN.INSTALLED.'/public/template/');
 Define('TEMPLATE_PATH', __APPDIR.'/public/template/');
 
 require_once __APPDIR."/app/core/app.php";
-require_once __APPDIR."/app/core/modules.php";
-require_once __APPDIR."/app/core/http.php";
-require_once __APPDIR."/app/base/json.php";
-
 
 ?>

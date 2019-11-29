@@ -23,8 +23,6 @@ function dead()
         die ("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Error</title></head><body><pre>Cannot GET  ". app::$path ." </pre></body></html>");
     }
 
-
-
 function request( $url , $callback )
     {
         include_once __APPDIR.'/app/modules/curl.php';
