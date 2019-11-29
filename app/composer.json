@@ -1,0 +1,6 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.4",
+        "jenssegers/blade": "^1.2"
+    }
+}
