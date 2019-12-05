@@ -31,6 +31,32 @@ class Miku {
         return $this ;
     }
 
+    public function controller( $formated ) {
+        // Example : HomeController\HomeController:home
+
+        preg_match('/(\w+)\\\(\w+)\:(\w+)/', $formated, $formated_ouput );
+        
+        $file = $this->controllers()->path() ."/". $formated_ouput[1] . ".php" ;
+        
+        $class = $formated_ouput[2];
+        
+        $method = $formated_ouput[3];
+        
+        if( !file_exists($file) ){
+            die("Controller File Not Found !!!");
+        }else{
+            require $file;
+            // Check exists class or not
+            if( !class_exists($class) )
+                die("Controller {$class} was not found !!");
+            
+            // Init Class
+            $the_view = new $class ;
+            
+            // Execute Method - Function
+            $the_view->$method();
+        }
+    }
 
     public function render( $path ,$inputs = [] ) {
         $this->viewData = $inputs;
@@ -48,13 +74,12 @@ class Miku {
     
     public function make( $path ,$inputs = [] ) {
         
-        $this->content =  file_get_contents (TEMPLATE_PATH . $this->template_subdir. $path);
-        
+        $this->content =  file_get_contents ( TEMPLATE_PATH . $this->template_subdir. $path);
         $this->viewData = ($inputs);
 
         $this->MikuRender();
         
-        return $this->content;
+        echo $this->content;
     }
 
     public function MikuRender () {
@@ -86,6 +111,7 @@ class Miku {
                 $this->content = preg_replace('/\{\{\$'. $val. '\}\}/', $GLOBALS['Miku'][$val] , $this->content);
                 
             }
+            return $this->content;
                 
     }
 
@@ -116,7 +142,8 @@ class Miku {
         $this->template_subdir = "";
         return $this ;
     }
+}
 
-
-
+function Miku() {
+    return new  Miku ; 
 }

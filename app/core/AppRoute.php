@@ -158,7 +158,13 @@ class AppRoute {
                     self::$request = $request;
                     self::$response = $response;
                     
-                    $callback($request,$response);
+                    if(!is_callable($callback)){
+                        $route_view = new Miku ;
+
+                        $route_view->controller($callback);
+                        
+                    }else 
+                        $callback($request,$response);
 
                     if(app::$once) die();
 
@@ -204,7 +210,13 @@ class AppRoute {
                     }else {
                         self::$request = $request;
                         self::$response = $response;
-                        $callback($request,$response);
+                        if(!is_callable($callback)){
+                            $route_view = new Miku ;
+
+                            $route_view->controller($callback);
+                            
+                        }else 
+                            $callback($request,$response);
                         if(app::$once) die();
                     }
 
