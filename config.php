@@ -15,7 +15,7 @@
 $microtime = microtime(true);
 
 # Installed directory
-Define( 'INSTALLED' , '/ani4vn.com' );
+Define( 'INSTALLED' , '/ExpressPhpv2' );
 
 # App root directory
 Define('__APPDIR', "{$_SERVER['DOCUMENT_ROOT']}".INSTALLED);
