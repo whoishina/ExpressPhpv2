@@ -32,7 +32,7 @@ Define("MIKU" , [
 Define('ACTIVE_THEME','');
 
 # Config public domain
-Define('DOMAIN','127.0.0.1');
+Define('DOMAIN','ani4vn.moe');
 
 # Config public domain
 Define('__APPURI','//'.DOMAIN.INSTALLED);

@@ -51,8 +51,7 @@
 <div class="container">
     <div class="content">
         <div class="title">Welcome to Express PHP</div>
-        <div class="notice">Version {{ver}}</div>
-        <div class="notice">File location : {{location}}</div>
+        <div class="notice">Version {{ver}} </div>
     </div>
 </div>
 </body>
