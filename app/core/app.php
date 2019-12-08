@@ -5,6 +5,9 @@ require __DIR__ . "/AppRoute.php";
 
 class app extends AppRoute
 {
+
+    public static $db ; 
+
     public static function error($status,$callback)
     {
         if($status == 404)
