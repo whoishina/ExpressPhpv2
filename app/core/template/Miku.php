@@ -60,6 +60,11 @@ class Miku {
 
     public function render( $path ,$inputs = [] ) {
         $this->viewData = $inputs;
+        
+        foreach($this->viewData as $thisData => $thisValue ){
+            $$thisData = $thisValue;
+        }
+
         require (TEMPLATE_PATH . $this->template_subdir. $path);
     }
 
