@@ -15,7 +15,7 @@
 $microtime = microtime(true);
 
 # Installed directory
-Define( 'INSTALLED' , '/ExpressPhpv2' );
+Define( 'INSTALLED' , '/' );
 
 # App root directory
 Define('__APPDIR', "{$_SERVER['DOCUMENT_ROOT']}".INSTALLED);
